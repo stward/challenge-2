@@ -4,17 +4,15 @@ var http = require('http');
 var fs = require('fs');
 var bodyParser = require('body-parser');
 var db = require('./model/db');
-var blogModel = require('./model/blogs');
+var blogModel = require('./model/blog');
 
 var app = express();
 
 var blogRoutes = require('./routes/blog');
 
-app.use(bodyParser.urlencoded({ extended: true }))
-app.use(bodyParser.json());
 app.use(express.static('public'));
 
-app.use('/api/blogs', blogs)
+app.use('/api/blogs', blogRoutes)
 
 app.get('/', function(req, res){
 	res.readFile('index.html')

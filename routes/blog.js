@@ -13,20 +13,23 @@ function filterByTitle(obj) {
   } else {
     return false;
   }
-}
+};
+
+router.route('/')
 
 /* GET All Blogs */
-router.get('/', function(req, res) {
-  mongoose.model('Blog').find({}, function(err, blogs){
-    if(err){
-      return console.log(err);
-    } else {
-      var arrByTitle = blogs.filter(filterByTitle);
-      res.json(arrByTitle);
-    }
-  });
-});
-router.post('/', function(req, res){
+  .get(function(req, res) {
+    mongoose.model('Blog').find({}, function(err, blogs){
+      if(err){
+        return console.log(err);
+      } else {
+        var arrByTitle = blogs.filter(filterByTitle);
+        res.json(arrByTitle);
+      }
+    });
+  })
+
+  .post(function(req, res){
     var title = req.body.title;
     var body = req.body.body;
 
@@ -44,22 +47,42 @@ router.post('/', function(req, res){
   });
 
 
-router.delete('/:id', function(req, res){
-  var id = req.params.id;
+  router.route('/:id')
+    .get(function(req, res) {
+        mongoose.model('Blog').findById({
+            _id: req.params.id
+        }, function(err, blog) {
+            if (err)
+                res.send(err);
 
-  mongoose.model('Blog').remove({_id:id}, function(err, post){
-    if(err){
-      console.log('Error', err)
-      res.status(500).send('Error')
-      return
-    }
+            res.json(blog);
+        });
+    })
 
-    console.log('Post with id ', id, ' was deleted')
-    res.status(200).send({id:id})
+    // update the bear with this id (accessed at PUT http://localhost:8080/api/bears/:id)
+    .put(function(req, res) {
+        mongoose.model('Blog').findById({
+            _id: req.params.id,
+            title: req.params.title,
+            body: req.params.body
+        }, function(err, blog) {
+            if (err)
+                res.send(err);
 
+            res.json(blog);
+            res.send("blog was updated")
+        });
+    })
+    // delete the bear with this id (accessed at DELETE http://localhost:8080/api/blogs/:id)
+    .delete(function(req, res) {
+        mongoose.model('Blog').remove({
+            _id: req.params.id
+        }, function(err, blog) {
+            if (err)
+                res.send(err);
 
-  })
-
-})
+            res.json({ message: 'Successfully deleted' });
+        });
+    });
 
 module.exports = router;
