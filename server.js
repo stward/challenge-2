@@ -6,9 +6,13 @@ var bodyParser = require('body-parser');
 
 var app = express();
 
-app.use(bodyParser.urlencoded({ extended: true }))
+var blogs = require('./routes/blog');
 
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json());
 app.use(express.static('public'));
+
+app.use('/api/blogs', blogs)
 
 app.get('/', function(req, res){
 	res.readFile('index.html')
