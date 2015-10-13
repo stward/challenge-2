@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/fresh5447/dougs-blog",
   "dependencies": {
+    "express": "^4.13.3",
     "mongoose": "^4.1.11"
   }
 }
