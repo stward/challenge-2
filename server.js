@@ -3,10 +3,12 @@ var path = require('path');
 var http = require('http');
 var fs = require('fs');
 var bodyParser = require('body-parser');
+var db = require('./model/db');
+var blogModel = require('./model/blogs');
 
 var app = express();
 
-var blogs = require('./routes/blog');
+var blogRoutes = require('./routes/blog');
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json());
