@@ -1,15 +1,16 @@
+
+//This should make a request to your animals api, and append each item
+//to the HTML id list
 (function(){
-$.getJSON( "http://localhost:3000/api/blogs", function( data ) {
+$.getJSON( "YOUR URL", function( data ) {
   var items = [];
   $.each( data, function( key, val ) {
-  	console.log(key, val)
-  	console.log(val.title);
-  	console.log(val.body);
-    items.push( "<li title='" + val.title + "' id='" + val.title + "'>" + val.title + val.body +"</li>" );
+
+    items.push( "<li>" + val.SOMETHING + val.SOMETHING +"</li>" );
   });
   $( "<ul/>", {
     "class": "my-new-list",
     html: items.join( "" )
-  }).appendTo( "#blog-list" );
+  }).appendTo( "#list" );
 });
 })();

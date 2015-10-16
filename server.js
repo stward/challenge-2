@@ -4,7 +4,7 @@ var http = require('http');
 var fs = require('fs');
 var bodyParser = require('body-parser');
 var db = require('./model/db');
-var blogModel = require('./model/blog');
+var animalModel = require('./model/animal');
 
 
 
@@ -12,11 +12,11 @@ var app = express();
 
 app.set('port', (process.env.PORT || 3000));
 
-var blogRoutes = require('./routes/blog');
+var animalRoutes = require('./routes/animal');
 
 app.use(express.static('public'));
 
-app.use('/api/blogs', blogRoutes)
+app.use('/api/animals', blogRoutes)
 
 app.get('/', function(req, res){
 	res.readFile('index.html')
