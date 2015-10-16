@@ -5,6 +5,7 @@ var fs = require('fs');
 var bodyParser = require('body-parser');
 var db = require('./model/db');
 var blogModel = require('./model/blog');
+var port = (process.env.PORT || 3000)
 
 var app = express();
 
@@ -18,4 +19,5 @@ app.get('/', function(req, res){
 	res.readFile('index.html')
 });
 
-app.listen(3000);
+
+app.listen(port);
