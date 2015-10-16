@@ -11,7 +11,7 @@ router.route('/')
   .get(function(req, res) {
     mongoose.model('Animal').find({}, function(err, animals){
       if(err){
-        return console.log(err);
+        //DO SOMETHING
       } else {
         //DO SOMETHING WITH THE RESPONSE
       }
@@ -26,7 +26,7 @@ router.route('/')
       //Use the variables
     }, function(err, animal){
       if(err){
-        res.send("houston we have a problem")
+        //DO SOMETHING
       } else{
         //DO SOMETHING WITH THE RESPONSE
       }

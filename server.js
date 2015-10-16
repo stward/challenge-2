@@ -16,7 +16,7 @@ var animalRoutes = require('./routes/animal');
 
 app.use(express.static('public'));
 
-app.use('/api/animals', animalRoutes);
+app.use('/api/animals', SOMETHING_GOES_HERE);
 
 app.get('/', function(req, res){
 	res.readFile('index.html')

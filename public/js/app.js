@@ -2,7 +2,7 @@
 //This should make a request to your animals api, and append each item
 //to the HTML id list
 (function(){
-$.getJSON( "YOUR URL", function( data ) {
+$.getJSON( "YOUR URL GOES HERE", function( data ) {
   var items = [];
   $.each( data, function( key, val ) {
 
