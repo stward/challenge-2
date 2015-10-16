@@ -6,9 +6,11 @@ var bodyParser = require('body-parser');
 var db = require('./model/db');
 var blogModel = require('./model/blog');
 
-app.set('port', (process.env.PORT || 3000));
+
 
 var app = express();
+
+app.set('port', (process.env.PORT || 3000));
 
 var blogRoutes = require('./routes/blog');
 
