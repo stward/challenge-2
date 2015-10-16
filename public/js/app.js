@@ -14,3 +14,6 @@ $.getJSON( "YOUR URL", function( data ) {
   }).appendTo( "#list" );
 });
 })();
+
+//YOU WILL NEED TO WRITE AN AJAX POST METHOD WHICH WILL POST THE
+//FORM CONTENTS TO THE APPROPRIATE URL
