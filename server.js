@@ -16,7 +16,7 @@ var animalRoutes = require('./routes/animal');
 
 app.use(express.static('public'));
 
-app.use('/api/animals', blogRoutes)
+app.use('/api/animals', animalRoutes);
 
 app.get('/', function(req, res){
 	res.readFile('index.html')
