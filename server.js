@@ -4,7 +4,7 @@ var http = require('http');
 var fs = require('fs');
 var bodyParser = require('body-parser');
 var db = require('./model/db');
-var animalModel = require('./model/animal');
+var animalModel = require(SOMETHING_GOES_HERE);
 
 
 
