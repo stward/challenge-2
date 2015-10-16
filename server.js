@@ -5,7 +5,8 @@ var fs = require('fs');
 var bodyParser = require('body-parser');
 var db = require('./model/db');
 var blogModel = require('./model/blog');
-var port = (process.env.PORT || 3000)
+
+app.set('port', (process.env.PORT || 3000));
 
 var app = express();
 
@@ -20,4 +21,6 @@ app.get('/', function(req, res){
 });
 
 
-app.listen(port);
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
+});
