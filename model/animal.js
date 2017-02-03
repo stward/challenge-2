@@ -1,7 +1,10 @@
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
-var animalSchema = new mongoose.Schema({
-	//ANIMAL SHOULD HAVE TYPE AND NAME
+var AnimalSchema = new Schema({
+  name:   String,
+  species: String,
+  color:  String
 });
 
-mongoose.model('Animal', animalSchema);
+module.exports = mongoose.model('Animal', AnimalSchema);

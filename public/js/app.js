@@ -1,16 +1,26 @@
+$( document ).ready(function() {
+    console.log( "ready!" );
 
-//This should make a request to your animals api, and append each item
-//to the HTML id list
-(function(){
-$.getJSON( "YOUR URL GOES HERE", function( data ) {
-  var items = [];
-  $.each( data, function( key, val ) {
+    function submitAnimal(e) {
+      e.preventDefault();
+      var name = $("#animalName").val();
+      var species = $("#animalSpecies").val();
+      var color = $("#animalColor").val();
+      console.log("ABout to submit")
+      $.ajax({
+        url: '/post',
+        method: 'POST',
+        data: {
+          name: name,
+          species: species,
+          color: color
+        }
+      }).done(function (data) {
+        console.log("Submittited", data);
+        window.location = "/view";
+      })
+    }
 
-    items.push( "<li>" + val.SOMETHING + val.SOMETHING +"</li>" );
-  });
-  $( "<ul/>", {
-    "class": "my-new-list",
-    html: items.join( "" )
-  }).appendTo( "#list" );
+    $("#newAnimalForm").on('click', submitAnimal);
+
 });
-})();

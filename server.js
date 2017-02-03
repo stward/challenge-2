@@ -4,23 +4,24 @@ var http = require('http');
 var fs = require('fs');
 var bodyParser = require('body-parser');
 var db = require('./model/db');
-var animalModel = require(SOMETHING_GOES_HERE);
-
-
+var animalModel = require('./model/animal');
+var animalRoutes = require('./routes/animal');
 
 var app = express();
 
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
+
 app.set('port', (process.env.PORT || 3000));
 
-var animalRoutes = require('./routes/animal');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static('public'));
 
-app.use('/api/animals', SOMETHING_GOES_HERE);
-
-app.get('/', function(req, res){
-	res.readFile('index.html')
-});
+app.use('/', animalRoutes);
 
 
 app.listen(app.get('port'), function() {
