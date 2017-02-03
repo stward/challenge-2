@@ -3,14 +3,22 @@ $( document ).ready(function() {
 
     function submitAnimal(e) {
       e.preventDefault();
-      console.log("ABout to submit")
+      var name = $('#name').val();
+      var species = $('#species').val();
+      var color = $('#color').val();
+
+      console.log("About to submit")
       $.ajax({
-        url: '/post',
+        url: 'post',
         method: 'POST',
-        data: { }
+        data: {
+          name: name,
+          species: species,
+          color: color
+        }
       }).done(function (data) {
         console.log("Submittited", data);
-        window.location = "/view";
+        window.location = "/";
       })
     }
 

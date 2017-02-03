@@ -1,14 +1,14 @@
 var express = require('express');
-var Router = new express.Router();
-var Animal = require('../model/goat');
+var Router = express.Router();
+var Animal = require('../model/animal');
 
-Router.route('/view')
+Router.route('/')
   .get(function(req, res) {
-    Goat.find(function(err, animals) {
+    Animal.find(function(err, animals) {
       if(err){
         console.log(err, "Error finding tasks");
       } else {
-        res.render('view', {});
+        res.render('view', { animals: animals});
       }
     });
   })
@@ -18,11 +18,21 @@ Router.route('/form')
     res.render('form')
   });
 
-
-
 Router.route('/post')
-.post(function(req, res) {
-  // post new animal
-});
+  .post(function(req, res) {
+    var animal = new Animal({
+      name:    req.body.name,
+      species: req.body.species,
+      color:   req.body.color
+    });
+
+    animal.save(function(err, animalData) {
+      if(err){
+        console.log(err, "Error with animal");
+      } else {
+        res.json(animalData);
+      }
+    });
+  });
 
 module.exports = Router;
