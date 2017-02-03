@@ -3,9 +3,9 @@ var path = require('path');
 var http = require('http');
 var fs = require('fs');
 var bodyParser = require('body-parser');
-var db = require('./model/db');
-var animalModel = require('./model/animal');
-var animalRoutes = require('./routes/animal');
+var db = require('./model/database');
+var animalModel = require(whereAmI);
+var animalRoutes = require(thisLooksCorrect);
 
 var app = express();
 
@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static('public'));
 
-app.use('/', animalRoutes);
+app.use('/', bobcatRoutes);
 
 
 app.listen(app.get('port'), function() {
