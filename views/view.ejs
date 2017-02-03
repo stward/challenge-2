@@ -14,24 +14,7 @@
     <div class="container">
         <div class="row">
           <h1>  Animals ? </h1>
-          <% if (animals.length > 0) { %>
-            <div class="spacer30"></div>
-            <h3>Current Tasks</h3>
-            <table class="table table-bordered">
-              <tr>
-                <th>name</th>
-                <th>color</th>
-                <th>species</th>
-              </tr>
-              <% for (var i = 0; i < animals.length; i++) { %>
-                <tr>
-                  <td><%= animals[i].name %></td>
-                  <td><%= animals[i].color %></td>
-                  <td><%= animals[i].species %></td>
-                </tr>
-              <% } %>
-            </table>
-          <% } %>
+          <p>EJS Will render Animals</p>
         </div>
     </div>
 
